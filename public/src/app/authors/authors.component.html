@@ -9,12 +9,25 @@
       <th scope="col">Setting</th>
     </tr>
   </thead>
-  <tbody *ngFor="let author of authors">
+  <tbody *ngFor="let author of authors; let i = index">
     <tr>
-      <td>{{ author.name }}</td>
+      <td>{{ author.name }} 
+        <div *ngIf="likeStat[i] == false">
+          <p> like: 0 </p>
+        </div>
+        <div *ngIf="likeStat[i] == true">
+          <p> like: 1 </p>
+        </div>
+      </td>
       <td>
         <button [routerLink]="['/edit', author._id]">EDIT</button>
         <button (click)="delete(author._id)">Delete</button>
+        <div *ngIf="likeStat[i] == false">
+          <button (click)="likeIt(i)">Like</button>
+        </div>
+        <div *ngIf="likeStat[i] == true">
+          <button (click)="unlikeIt(i)">unLike</button>
+        </div>
       </td>
     </tr>
   </tbody>
