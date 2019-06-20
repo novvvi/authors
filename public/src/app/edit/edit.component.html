@@ -1,0 +1,12 @@
+<a [routerLink]="['/']">Home</a>
+<p>Edit this author:</p>
+<br>
+<p>Name:</p>
+<form (submit)="editAuthor()">
+  <p>{{ author | json }}</p>
+  <input type="text" name="author.name" [(ngModel)]="author.name"/>
+  <button type="submit" value="submit">Submit</button> 
+</form>
+<div *ngFor="let err of errors">
+  <p style="color: red">{{err}}</p>
+</div>
